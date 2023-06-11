@@ -47,7 +47,8 @@ List<Debtor> debtors = new List<Debtor> {
             new Debtor("James E. Denning", DateTime.Parse("May 4, 1988"), "504-289-8640", "JamesEDenning@jourrapide.com", "1444 Rose Avenue Metairie, LA 70001", 8176),
             new Debtor("Richard M. Thomas", DateTime.Parse("February 13, 1972"), "510-735-3359", "RichardMThomas@jourrapide.com", "4454 Green Avenue Oakland, CA 94609", 7875),
             new Debtor("Lakisha R. Forrest", DateTime.Parse("December 1, 1973"), "334-830-1181", "LakishaRForrest@armyspy.com", "3121 Quarry Drive Montgomery, AL 36117", 3088),
-            new Debtor("Pamela H. Beauchamp", DateTime.Parse("November 20, 1959"), "801-559-6347", "PamelaHBeauchamp@jourrapide.com", "3239 Tori Lane Salt Lake City, UT 84104", 6588)
+            new Debtor("Pamela H. Beauchamp", DateTime.Parse("November 20, 1959"), "801-559-6347", "PamelaHBeauchamp@jourrapide.com", "3239 Tori Lane Salt Lake City, UT 84104", 6588),
+            new Debtor("Salam", DateTime.Parse("November 20, 1959"), "801-559-6347", "PamelaHBeauchamp@jourrapide.com", "3239 Tori Lane Salt Lake City, UT 84104", 500)
         };
 
 //Task1  Adı saitlə başlayan borcluları göstərin
@@ -91,7 +92,26 @@ List<Debtor> debtors = new List<Debtor> {
 //debtors.OrderByDescending(d => d.Debt).Take(5).ToList().ForEach(d => Console.WriteLine(d));
 
 
+//Task11 Bütün debitorların ümumi borcunu göstərin.
 
+//Console.WriteLine(debtors.Sum(d => d.Debt));
+
+//Task12 İkinci Dünya Müharibəsindən sağ çıxmış insanların ad və soyadlarını göstərin.
+
+//debtors.Where(d => d.BirthDay.Year < 1945).ToList().ForEach(d => Console.WriteLine(d));
+
+//Task13 SSRİ-nin dağılmasından sonra doğulanların adlarını və yaşlarını göstərin
+
+//debtors.Where(d => d.BirthDay.Year > 1921).ToList().ForEach(d => Console.WriteLine(d));
+
+//Task14 Təsəvvür edək ki, bütün borclular cari gündən hər ay 500 dollar borclarını qaytarmağa başlayıblar.
+// Növbəti doğum gününə qədər borcunu qaytarmağa nail olacaq borcluların siyahısını göstərin.
+
+debtors.Where(d => (d.BirthDay.Month - DateTime.Now.Month) * 500 >= d.Debt).ToList().ForEach(d => Console.WriteLine(d));
+
+//Task15 Adları və soyadları "smile" sözünü yaratmaq üçün istifadə edilə bilən borcluları göstərin.
+
+//debtors.Where(d => (d.FullName.Contains('s') || d.FullName.Contains('S')) && (d.FullName.Contains('m') || d.FullName.Contains('M')) && (d.FullName.Contains('i') || d.FullName.Contains('I')) && (d.FullName.Contains('L') || d.FullName.Contains('l')) && (d.FullName.Contains('e') || d.FullName.Contains('E'))).ToList().ForEach(d => Console.WriteLine(d));
 
 
 class Debtor
