@@ -1,4 +1,7 @@
-﻿List<Debtor> debtors = new List<Debtor> {
+﻿using System.Linq;
+using static System.Net.Mime.MediaTypeNames;
+
+List<Debtor> debtors = new List<Debtor> {
             new Debtor("Shirley T. Qualls", DateTime.Parse("March 30, 1932"), "530-662-7732", "ShirleyTQualls@teleworm.us", "3565 Eagles Nest Drive Woodland, CA 95695", 2414),
             new Debtor("Danielle W. Grier", DateTime.Parse("October 18, 1953"), "321-473-4178", "DanielleWGrier@rhyta.com", "1973 Stoneybrook Road Maitland, FL 32751", 3599),
             new Debtor("Connie W. Lemire", DateTime.Parse("June 18, 1963"), "828-321-3751", "ConnieWLemire@rhyta.com", "2432 Hannah Street Andrews, NC 28901", 1219),
@@ -69,6 +72,27 @@
 
 //Task6 Qışda doğulan borcluları poçt indeksinə görə sıralayın (ünvanın sonunda 5 rəqəm).
 
+//debtors.Where(d => d.BirthDay.Month == 12 || d.BirthDay.Month == 1 || d.BirthDay.Month == 2).OrderBy(d => d.Address.Substring(d.Address.Length - 5)).ToList().ForEach(d => Console.WriteLine(d));
+
+//Task7 Ən qısa adı olan borclular arasında ən uzun soyadlı borclunu göstərin.
+
+//Console.WriteLine(debtors.OrderBy(d => d.FullName.Split(' ')[0].Length).ThenByDescending(d => d.FullName.Split(' ')[2].Length).FirstOrDefault());
+
+//Task8 Borclular arasında ən populyar e-poçt domenini göstərin.
+
+//Console.WriteLine(debtors.GroupBy(d => d.Email.Split('@')[1]).OrderByDescending(d => d.Count()).First().Key);
+
+//Task9 Ən çox borcluların doğulduğu ili göstərin.
+
+//Console.WriteLine(debtors.GroupBy(d => d.BirthDay.Year).OrderByDescending(d => d.Count()).First().Key);
+
+//Task10 Borc məbləğinə görə ilk 5 borcluyu göstərin.
+
+//debtors.OrderByDescending(d => d.Debt).Take(5).ToList().ForEach(d => Console.WriteLine(d));
+
+
+
+
 
 class Debtor
 {
@@ -78,7 +102,7 @@ class Debtor
     public string Email { get; set; }
     public string Address { get; set; }
     public int Debt { get; set; }
- 
+
     public Debtor(string fullname, DateTime birthDay, string phone, string email, string address, int debt)
     {
         FullName = fullname;
