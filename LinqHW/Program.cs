@@ -107,7 +107,7 @@ List<Debtor> debtors = new List<Debtor> {
 //Task14 Təsəvvür edək ki, bütün borclular cari gündən hər ay 500 dollar borclarını qaytarmağa başlayıblar.
 // Növbəti doğum gününə qədər borcunu qaytarmağa nail olacaq borcluların siyahısını göstərin.
 
-debtors.Where(d => (d.BirthDay.Month - DateTime.Now.Month) * 500 >= d.Debt).ToList().ForEach(d => Console.WriteLine(d));
+debtors.Where(d => Math.Abs(d.BirthDay.Month - DateTime.Now.Month) * 500 >= d.Debt).ToList().ForEach(d => Console.WriteLine(d));
 
 //Task15 Adları və soyadları "smile" sözünü yaratmaq üçün istifadə edilə bilən borcluları göstərin.
 
